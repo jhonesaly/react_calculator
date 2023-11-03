@@ -1,9 +1,11 @@
-
+import { Container } from "./styles";
 
 const App = () => {
   return (
     <div className="App">
-      Teste
+      <Container>
+        Teste
+      </Container>
     </div>
   );
 }
