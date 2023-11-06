@@ -17,6 +17,8 @@ const App = () => {
 
   const handleOnClear = () => {
     setCurrentNumber('0')
+    setFirstNumber('0')
+    setOperation('')
   };
 
   const handleSumNumbers = () => {
