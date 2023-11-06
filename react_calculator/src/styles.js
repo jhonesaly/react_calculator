@@ -10,8 +10,8 @@ export const Container = styled.div`
     justify-content: center;
 `
 
-export const Content = styled.dev`
-    background-color: #FFFFFF
+export const Content = styled.div`
+    background-color: #FFFFFF;
     width: 80%;
     min-height: 350px;
 `
