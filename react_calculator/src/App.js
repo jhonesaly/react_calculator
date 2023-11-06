@@ -7,49 +7,56 @@ import { useState } from 'react';
 
 const App = () => {
   
-  const [currentNumber, setCurrentNumber] = useState('0');
-  const [firstNumber, setFirstNumber] = useState('0');
+  const [visorNumber, setVisorNumber] = useState('0');
+  const [answerNumber, setAnswerNumber] = useState('null');
+  const [operatorNumber, setOperatorNumber] = useState('0');
   const [operation, setOperation] = useState('');
 
   const handleAddNumber = (num) => {
-    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`);
+    setVisorNumber(prev => `${prev === '0' ? '' : prev}${num}`);
   }
 
   const handleOnClear = () => {
-    setCurrentNumber('0')
-    setFirstNumber('0')
+    setVisorNumber('0')
+    setOperatorNumber('0')
     setOperation('')
+    setAnswerNumber('null')
   };
 
+  const showAnswer = () => {
+    setVisorNumber(answerNumber);
+  }
+
   const handleSumNumbers = () => {
-    if(firstNumber === '0'){
-      setFirstNumber(String(currentNumber));
-      setCurrentNumber('0')
-      setOperation('+')
+    if(operatorNumber === '0'){
+      setOperatorNumber(String(visorNumber));
+      setVisorNumber('0');
+      setOperation('+');
     }else {
-      const sum = Number(firstNumber) + Number(currentNumber);
-      setCurrentNumber(String(sum))
+      const sum = Number(operatorNumber) + Number(visorNumber);
+      setAnswerNumber(String(sum))
       setOperation('')
     }
   }
 
   const handleMinusNumbers = () => {
-    if(firstNumber === '0'){
-      setFirstNumber(String(currentNumber));
-      setCurrentNumber('0')
-      setOperation('-')
+    if(operatorNumber === '0'){
+      setOperatorNumber(String(visorNumber));
+      setVisorNumber('0');
+      setOperation('-');
     }else {
-      const sum = Number(firstNumber) - Number(currentNumber);
-      setCurrentNumber(String(sum))
-      setOperation('')
+      const sum = Number(operatorNumber) - Number(visorNumber);
+      setVisorNumber(String(sum));
+      setOperation('');
     }
   }
 
   const handleEquals = () => {
-    if (firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
+    if (operatorNumber !== '0' && operation !== '' && visorNumber !== '0'){
       switch(operation){
         case '+':
           handleSumNumbers();
+          showAnswer();
           break
         case '-':
           handleMinusNumbers();
@@ -62,7 +69,7 @@ const App = () => {
   return (
       <Container>
         <Content>
-          <Input value={currentNumber}/>
+          <Input value={visorNumber}/>
           <Row>
             <Button label="7" onClick={() => handleAddNumber('7')}/>
             <Button label="8" onClick={() => handleAddNumber('8')}/>
@@ -88,7 +95,7 @@ const App = () => {
             <Button label="0" onClick={() => handleAddNumber('0')}/>
             <Button label=","/>
             <Button label="^"/>
-            <Button label="A"/>
+            <Button label="A"onClick={showAnswer}/>
             <Button label="=" onClick={handleEquals}/>
           </Row>
         </Content>
