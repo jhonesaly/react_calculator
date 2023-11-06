@@ -7,8 +7,11 @@ import { useState } from 'react';
 
 const App = () => {
   
-  const [currentNumber, setCurrentNumber] = useState(0);
-  
+  const [currentNumber, setCurrentNumber] = useState('0');
+
+
+
+
   const handleAddNumber = (num) => {
     setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`);
   }
