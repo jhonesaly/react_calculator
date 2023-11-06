@@ -10,8 +10,13 @@ const App = () => {
   const [currentNumber, setCurrentNumber] = useState(0);
   
   const handleAddNumber = (num) => {
-    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`)
+    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`);
   }
+
+  const handleOnClear = () => {
+    setCurrentNumber('0')
+  };
+
   return (
       <Container>
         <Content>
@@ -21,7 +26,7 @@ const App = () => {
             <Button label="8" onClick={() => handleAddNumber('8')}/>
             <Button label="9" onClick={() => handleAddNumber('9')}/>
             <Button label="B"/>
-            <Button label="C"/>
+            <Button label="C" onClick={handleOnClear}/>
 
           </Row>
           <Row>
