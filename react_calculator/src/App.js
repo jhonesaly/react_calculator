@@ -8,9 +8,8 @@ import { useState } from 'react';
 const App = () => {
   
   const [currentNumber, setCurrentNumber] = useState('0');
-
-
-
+  const [firstNumber, setFirstNumber] = useState('0');
+  const [operation, setOperation] = useState('');
 
   const handleAddNumber = (num) => {
     setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`);
@@ -19,6 +18,18 @@ const App = () => {
   const handleOnClear = () => {
     setCurrentNumber('0')
   };
+
+  const handleSumNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0')
+      setOperation('+')
+    }else {
+      const sum = Number(firstNumber) + Number(currentNumber);
+      setCurrentNumber('0')
+      setOperation('')
+    }
+  }
 
   return (
       <Container>
