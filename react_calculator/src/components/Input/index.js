@@ -3,7 +3,7 @@ import { InputContainer } from './styles';
 const Input = () => {
     return (
       <InputContainer>
-        Input
+        1234567890
       </InputContainer>
     );
   }
