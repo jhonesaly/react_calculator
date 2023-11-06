@@ -26,7 +26,7 @@ const App = () => {
       setOperation('+')
     }else {
       const sum = Number(firstNumber) + Number(currentNumber);
-      setCurrentNumber('0')
+      setCurrentNumber(String(sum))
       setOperation('')
     }
   }
@@ -76,7 +76,6 @@ const App = () => {
             <Button label="A"/>
             <Button label="=" onClick={handleEquals}/>
           </Row>
-
         </Content>
       </Container>
   );
