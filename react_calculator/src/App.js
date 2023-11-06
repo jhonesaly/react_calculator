@@ -31,6 +31,18 @@ const App = () => {
     }
   }
 
+  const handleEquals = () => {
+    if (firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
+      switch(operation){
+        case '+':
+          handleSumNumbers();
+          break
+        default:
+          break;
+      }
+    }
+  }
+
   return (
       <Container>
         <Content>
@@ -62,7 +74,7 @@ const App = () => {
             <Button label=","/>
             <Button label="^"/>
             <Button label="A"/>
-            <Button label="="/>
+            <Button label="=" onClick={handleEquals}/>
           </Row>
 
         </Content>
