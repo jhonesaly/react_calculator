@@ -66,7 +66,7 @@ const App = () => {
             <Button label="1" onClick={() => handleAddNumber('1')}/>
             <Button label="2" onClick={() => handleAddNumber('2')}/>
             <Button label="3" onClick={() => handleAddNumber('3')}/>
-            <Button label="+"/>
+            <Button label="+" onClick={handleSumNumbers}/>
             <Button label="-"/>
           </Row>
           <Row>
