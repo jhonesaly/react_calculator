@@ -10,33 +10,33 @@ const App = () => {
         <Content>
           <Input />
           <Row>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
-            <Button />
+            <Button label="7"/>
+            <Button label="8"/>
+            <Button label="9"/>
+            <Button label="B"/>
+            <Button label="C"/>
 
           </Row>
           <Row>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
-            <Button />
+            <Button label="4"/>
+            <Button label="5"/>
+            <Button label="6"/>
+            <Button label="X"/>
+            <Button label="/"/>
           </Row>
           <Row>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
-            <Button />
+            <Button label="1"/>
+            <Button label="2"/>
+            <Button label="3"/>
+            <Button label="+"/>
+            <Button label="-"/>
           </Row>
           <Row>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
-            <Button />
+            <Button label="0"/>
+            <Button label=","/>
+            <Button label="^"/>
+            <Button label="A"/>
+            <Button label="="/>
           </Row>
 
         </Content>
