@@ -9,6 +9,8 @@ const App = () => {
       <Container>
         <Content>
           <Input />
+          <Button />
+          <Button />
         </Content>
       </Container>
   );
