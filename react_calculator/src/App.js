@@ -125,7 +125,7 @@ const App = () => {
           </Row>
           <Row>
             <Button label="0" onClick={() => handleAddNumber('0')}/>
-            <Button label=","/>
+            <Button label="," onClick={() => handleAddNumber('.')}/>
             <Button label="^"/>
             <Button label="A"onClick={showAnswer}/>
             <Button label="=" onClick={handleEquals}/>
