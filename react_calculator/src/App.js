@@ -10,23 +10,34 @@ const App = () => {
   const [visorNumber, setVisorNumber] = useState('0');
   const [answerNumber, setAnswerNumber] = useState('0');
   const [operation, setOperation] = useState('');
+  const [state, setState] = useState('on')
+
+  const handleOff = () => {
+    setVisorNumber('')
+    setState('off')
+  };
 
   const handleAddNumber = (num) => {
-    setVisorNumber(prev => `${prev === '0' ? '' : prev}${num}`);
+    if (state === 'on'){
+      setVisorNumber(prev => `${prev === '0' ? '' : prev}${num}`);
+    }
   };
 
   const handleOnClear = () => {
+    setState('on')
     setOperation('')
     setVisorNumber('0')
     setAnswerNumber('0')
   };
 
   const showAnswer = () => {
+    if (state === 'on'){
     setVisorNumber(answerNumber);
-  }
+    }
+  };
 
   const handleEquals = () => {
-    if (operation !== '' && answerNumber!== '0' && visorNumber !== '0'){
+    if (state === 'on' && operation !== '' && answerNumber!== '0' && visorNumber !== '0'){
       switch(operation){
         case '+':
           handleSumNumbers();
@@ -48,9 +59,10 @@ const App = () => {
           break;
       }
     }
-  }
+  };
 
   const handleSumNumbers = () => {
+    if (state === 'on'){
     if (operation !== '+'){
       setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
@@ -59,10 +71,11 @@ const App = () => {
       const sum = Number(answerNumber) + Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
-    }
-  }
+    }}
+  };
 
   const handleMinusNumbers = () => {
+    if (state === 'on'){
     if (operation !== '-'){
       setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
@@ -71,10 +84,11 @@ const App = () => {
       const sum = Number(answerNumber) - Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
-    }
-  }
+    }}
+  };
 
   const handleMultiplicateNumbers = () => {
+    if (state === 'on'){
     if (operation !== 'x'){
       setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
@@ -83,10 +97,11 @@ const App = () => {
       const sum = Number(answerNumber) * Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
-    }
-  }
+    }}
+  };
 
   const handleDivisionNumbers = () => {
+    if (state === 'on'){
     if (operation !== '/'){
       setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
@@ -95,10 +110,11 @@ const App = () => {
       const sum = Number(answerNumber) / Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
-    }
-  }
+    }}
+  };
 
   const handleExponencialNumbers = () => {
+    if (state === 'on'){
     if (operation !== '^'){
       setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
@@ -107,8 +123,8 @@ const App = () => {
       const sum = Number(answerNumber) ** Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
-    }
-  }
+    }}
+  };
 
   return (
       <Container>
@@ -118,8 +134,8 @@ const App = () => {
             <Button label="7" onClick={() => handleAddNumber('7')}/>
             <Button label="8" onClick={() => handleAddNumber('8')}/>
             <Button label="9" onClick={() => handleAddNumber('9')}/>
-            <Button label="B"/>
-            <Button label="C" onClick={handleOnClear}/>
+            <Button label="Off" onClick={handleOff}/>
+            <Button label="On" onClick={handleOnClear}/>
           </Row>
           <Row>
             <Button label="4" onClick={() => handleAddNumber('4')}/>
@@ -145,6 +161,6 @@ const App = () => {
         </Content>
       </Container>
   );
-}
+};
 
 export default App;
