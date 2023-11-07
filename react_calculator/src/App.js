@@ -36,6 +36,9 @@ const App = () => {
         case '-':
           handleMinusNumbers();
           break;
+        case 'x':
+          handleMultiplicateNumbers();
+          break;
         default:
           break;
         }
@@ -68,6 +71,18 @@ const App = () => {
     }
   }
 
+  const handleMultiplicateNumbers = () => {
+    if (operation !== 'x'){
+      setAnswerNumber(String(visorNumber));
+      setVisorNumber('0');
+      setOperation('x');
+    }else {
+      const sum = Number(answerNumber) * Number(visorNumber);
+      setVisorNumber(String(sum));
+      setAnswerNumber(visorNumber);
+    }
+  }
+
   return (
       <Container>
         <Content>
@@ -83,7 +98,7 @@ const App = () => {
             <Button label="4" onClick={() => handleAddNumber('4')}/>
             <Button label="5" onClick={() => handleAddNumber('5')}/>
             <Button label="6" onClick={() => handleAddNumber('6')}/>
-            <Button label="x"/>
+            <Button label="x" onClick={handleMultiplicateNumbers}/>
             <Button label="/"/>
           </Row>
           <Row>
