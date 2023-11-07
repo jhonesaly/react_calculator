@@ -39,6 +39,9 @@ const App = () => {
         case 'x':
           handleMultiplicateNumbers();
           break;
+          case '/':
+            handleDivisionNumbers();
+            break;
         default:
           break;
         }
@@ -83,6 +86,18 @@ const App = () => {
     }
   }
 
+  const handleDivisionNumbers = () => {
+    if (operation !== '/'){
+      setAnswerNumber(String(visorNumber));
+      setVisorNumber('0');
+      setOperation('/');
+    }else {
+      const sum = Number(answerNumber) / Number(visorNumber);
+      setVisorNumber(String(sum));
+      setAnswerNumber(visorNumber);
+    }
+  }
+
   return (
       <Container>
         <Content>
@@ -99,7 +114,7 @@ const App = () => {
             <Button label="5" onClick={() => handleAddNumber('5')}/>
             <Button label="6" onClick={() => handleAddNumber('6')}/>
             <Button label="x" onClick={handleMultiplicateNumbers}/>
-            <Button label="/"/>
+            <Button label="/" onClick={handleDivisionNumbers}/>
           </Row>
           <Row>
             <Button label="1" onClick={() => handleAddNumber('1')}/>
