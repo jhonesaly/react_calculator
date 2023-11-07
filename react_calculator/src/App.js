@@ -9,7 +9,6 @@ const App = () => {
   
   const [visorNumber, setVisorNumber] = useState('0');
   const [answerNumber, setAnswerNumber] = useState('0');
-  const [operatorNumber, setOperatorNumber] = useState('0');
   const [operation, setOperation] = useState('');
 
   const handleAddNumber = (num) => {
@@ -19,7 +18,6 @@ const App = () => {
   const handleOnClear = () => {
     setOperation('')
     setVisorNumber('0')
-    setOperatorNumber('0')
     setAnswerNumber('0')
   };
 
