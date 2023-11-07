@@ -17,9 +17,9 @@ const App = () => {
   };
 
   const handleOnClear = () => {
+    setOperation('')
     setVisorNumber('0')
     setOperatorNumber('0')
-    setOperation('')
     setAnswerNumber('0')
   };
 
@@ -28,14 +28,7 @@ const App = () => {
   }
 
   const handleEquals = () => {
-    console.log(operation)
-    console.log(operatorNumber)
-    console.log()
-    
-    if (operation !== ''){
-      if (operatorNumber === '0'){
-        setOperatorNumber(visorNumber);
-      }
+    if (operation !== '' && answerNumber!== '0' && visorNumber !== '0'){
       switch(operation){
         case '+':
           handleSumNumbers();
@@ -45,31 +38,31 @@ const App = () => {
           break;
         default:
           break;
-      }
+        }
     }else {
       showAnswer();
     }
   }
 
   const handleSumNumbers = () => {
-    if(operation !== '+'){
+    if (operation !== '+'){
       setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
       setOperation('+');
     }else {
-      const sum = Number(operatorNumber) + Number(answerNumber);
+      const sum = Number(answerNumber) + Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
     }
   }
 
   const handleMinusNumbers = () => {
-    if(operatorNumber === '0'){
-      setOperatorNumber(String(visorNumber));
+    if (operation !== '-'){
+      setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
       setOperation('-');
     }else {
-      const sum = Number(operatorNumber) - Number(visorNumber);
+      const sum = Number(answerNumber) - Number(visorNumber);
       setVisorNumber(String(sum));
       setAnswerNumber(visorNumber);
     }
