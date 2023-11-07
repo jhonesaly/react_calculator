@@ -39,14 +39,16 @@ const App = () => {
         case 'x':
           handleMultiplicateNumbers();
           break;
-          case '/':
-            handleDivisionNumbers();
-            break;
-        default:
+        case '/':
+          handleDivisionNumbers();
           break;
-        }
-    }else {
-      showAnswer();
+        case '^':
+          handleExponencialNumbers();
+          break;
+        default:
+          showAnswer();
+          break;
+      }
     }
   }
 
@@ -98,6 +100,18 @@ const App = () => {
     }
   }
 
+  const handleExponencialNumbers = () => {
+    if (operation !== '^'){
+      setAnswerNumber(String(visorNumber));
+      setVisorNumber('0');
+      setOperation('^');
+    }else {
+      const sum = Number(answerNumber) ** Number(visorNumber);
+      setVisorNumber(String(sum));
+      setAnswerNumber(visorNumber);
+    }
+  }
+
   return (
       <Container>
         <Content>
@@ -126,7 +140,7 @@ const App = () => {
           <Row>
             <Button label="0" onClick={() => handleAddNumber('0')}/>
             <Button label="," onClick={() => handleAddNumber('.')}/>
-            <Button label="^"/>
+            <Button label="^" onClick={handleExponencialNumbers}/>
             <Button label="A"onClick={showAnswer}/>
             <Button label="=" onClick={handleEquals}/>
           </Row>
