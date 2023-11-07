@@ -155,7 +155,7 @@ const App = () => {
             <Button label="0" onClick={() => handleAddNumber('0')}/>
             <Button label="," onClick={() => handleAddNumber('.')}/>
             <Button label="^" onClick={handleExponencialNumbers}/>
-            <Button label="A"onClick={showAnswer}/>
+            <Button label="M"onClick={showAnswer}/>
             <Button label="=" onClick={handleEquals}/>
           </Row>
         </Content>
