@@ -8,34 +8,58 @@ import { useState } from 'react';
 const App = () => {
   
   const [visorNumber, setVisorNumber] = useState('0');
-  const [answerNumber, setAnswerNumber] = useState('null');
+  const [answerNumber, setAnswerNumber] = useState('0');
   const [operatorNumber, setOperatorNumber] = useState('0');
   const [operation, setOperation] = useState('');
 
   const handleAddNumber = (num) => {
     setVisorNumber(prev => `${prev === '0' ? '' : prev}${num}`);
-  }
+  };
 
   const handleOnClear = () => {
     setVisorNumber('0')
     setOperatorNumber('0')
     setOperation('')
-    setAnswerNumber('null')
+    setAnswerNumber('0')
   };
 
   const showAnswer = () => {
     setVisorNumber(answerNumber);
   }
 
+  const handleEquals = () => {
+    console.log(operation)
+    console.log(operatorNumber)
+    console.log()
+    
+    if (operation !== ''){
+      if (operatorNumber === '0'){
+        setOperatorNumber(visorNumber);
+      }
+      switch(operation){
+        case '+':
+          handleSumNumbers();
+          break;
+        case '-':
+          handleMinusNumbers();
+          break;
+        default:
+          break;
+      }
+    }else {
+      showAnswer();
+    }
+  }
+
   const handleSumNumbers = () => {
-    if(operatorNumber === '0'){
-      setOperatorNumber(String(visorNumber));
+    if(operation !== '+'){
+      setAnswerNumber(String(visorNumber));
       setVisorNumber('0');
       setOperation('+');
     }else {
-      const sum = Number(operatorNumber) + Number(visorNumber);
-      setAnswerNumber(String(sum))
-      setOperation('')
+      const sum = Number(operatorNumber) + Number(answerNumber);
+      setVisorNumber(String(sum));
+      setAnswerNumber(visorNumber);
     }
   }
 
@@ -47,22 +71,7 @@ const App = () => {
     }else {
       const sum = Number(operatorNumber) - Number(visorNumber);
       setVisorNumber(String(sum));
-      setOperation('');
-    }
-  }
-
-  const handleEquals = () => {
-    if (operatorNumber !== '0' && operation !== '' && visorNumber !== '0'){
-      switch(operation){
-        case '+':
-          handleSumNumbers();
-          showAnswer();
-          break
-        case '-':
-          handleMinusNumbers();
-        default:
-          break;
-      }
+      setAnswerNumber(visorNumber);
     }
   }
 
